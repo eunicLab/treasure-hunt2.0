@@ -1,22 +1,121 @@
-.App {
-  text-align: center;
+.game { 
+    text-align: center;
+    background-color: #282c34;
+    min-height: 100vh;
+    min-width:424px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    padding-top: 5%;
+    padding-bottom: 5%
 }
 
-.App-logo {
-  height: 40vmin;
+
+.board {
+    display:block;
+    width:60%;
+    border-radius: 6px;
+    background-color: white;
+    color:black;
+    padding-top: 5%;
+    padding-bottom: 5%
+                }
+
+.boardNone {
+     display: none;
+                }
+
+
+div#messageArea {
+     position: absolute;
+     top: 0px;
+     left: 0px;
+     background-color:rgb(152, 207,113);
+     border-color: rgb(83, 175,19);
+     color: rgb(83, 175,19);
+                }
+     
+.table{
+     position: absolute;
+     left:173px;
+     top:98px;
+     border-spacing: 0px;
+     
+     }
+     
+ .square {
+    border:  2px solid #333;
+     width: 94px;
+    height: 94px;
+    text-align:  center;
+    vertical-align: middle;
+  font-family:  "Comic Sans MS", cursive, sans-serif;
+  font-size:  60px;
+  cursor: pointer;
+     }
+     
+.gameOver {
+    
+     display:block;
+     text-align: center;
+     padding-top: 20%;
+    height:50%;
+    width:60%;
+    border-radius: 6px;
+    background-color: white;
+    color:black;
+    padding-top: 5%;
+    padding-bottom: 5%;
+
+     }
+
+.gameInProgress {
+     display:none;
+     }
+
+input {
+     width: 94px;
+     height: 20px;
+     background-color:rgb(83, 175,19);
+     border-color: rgb(83, 175,19);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+     
+.tile{
+  border:  2px solid #333;
+     width: 94px;
+    height: 94px;
+    text-align:  center;
+    vertical-align: middle;
+  font-family:  "Comic Sans MS", cursive, sans-serif;
+  font-size:  60px;
+  cursor: pointer;
+background: url("tile.jpg") no-repeat center center;
 }
 
-.App-link {
-  color: #09d3ac;
+
+.hit{
+background: url("ship.png") no-repeat center center;
+border:  2px solid #333;
+     width: 94px;
+    height: 94px;
+    text-align:  center;
+    vertical-align: middle;
+  font-family:  "Comic Sans MS", cursive, sans-serif;
+  font-size:  60px;
+  cursor: pointer;
+}
+.miss {
+background: url("miss.png") no-repeat center center;
+border:  2px solid #333;
+     width: 94px;
+    height: 94px;
+    text-align:  center;
+    vertical-align: middle;
+  font-family:  "Comic Sans MS", cursive, sans-serif;
+  font-size:  60px;
+  cursor: pointer;
 }
