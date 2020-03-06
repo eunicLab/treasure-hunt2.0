@@ -3,28 +3,28 @@ import './App.css';
 import Hit from './Hit.mov';
 import Miss from './Miss.wav';
 
+var clickStatusCell = Array(16).fill(false);
+var count = 0;
+var correctClick = 0;
+var randomNumber = [];
 class App extends React.Component {
   constructor() {
     super();
-    global.clickStatusCell = Array(16).fill(false);
-    global.count = 0;
-    global.correctClick = 0;
     let boardSize = 16;
     let number = [];
-    global.randomNumber = [];
-    for (var i = 0; i < boardSize; i++) {
+    for (let i = 0; i < boardSize; i++) {
       number[i] = Math.floor(Math.random() * 2);
       if (number[i] === 1) {
-        global.randomNumber[i] = 'hit';
-        global.count++;
+        randomNumber[i] = 'hit';
+        count++;
       } else {
-        global.randomNumber[i] = 'miss';
+        randomNumber[i] = 'miss';
       }
     }
     this.state = {
       gameStatus: 'gameInProgress',
       boardDisplay: 'board',
-      cellBackground: global.randomNumber
+      cellBackground: randomNumber
     };
   }
 
@@ -42,15 +42,15 @@ class App extends React.Component {
   handleClick(event) {
     var i = event;
     if (
-      global.randomNumber[i] === 'hit' &&
-      global.clickStatusCell[i] === false &&
-      this.state.cellBackground[i] !== global.randomNumber[i]
+      randomNumber[i] === 'hit' &&
+      clickStatusCell[i] === false &&
+      this.state.cellBackground[i] !== randomNumber[i]
     ) {
-      global.correctClick++;
-      global.clickStatusCell[i] = true;
+      correctClick++;
+      clickStatusCell[i] = true;
       let audioEl = document.getElementsByClassName('audio-element')[0];
       audioEl.play();
-      if (global.correctClick !== 0 && global.count === global.correctClick) {
+      if (correctClick !== 0 && count === correctClick) {
         this.setState({ gameStatus: 'gameOver', boardDisplay: 'boardNone' });
       }
     } else {
@@ -59,7 +59,7 @@ class App extends React.Component {
     }
 
     const newBackground = this.state.cellBackground.slice();
-    newBackground[i] = global.randomNumber[i];
+    newBackground[i] = randomNumber[i];
     this.setState({
       cellBackground: newBackground
     });
@@ -144,7 +144,7 @@ class App extends React.Component {
         <div className={this.state.gameStatus}>
           <h1>Game Over!</h1>
           <h2>
-            Your Score: {global.correctClick} out of {global.count}
+            Your Score: {correctClick} out of {count}
           </h2>
           <input
             type='button'
